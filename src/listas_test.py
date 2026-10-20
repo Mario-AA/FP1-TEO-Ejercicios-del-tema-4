@@ -78,6 +78,7 @@ def test_mezcla_ordenadas():
     lista2 = []
     resultado_esperado = []
     assert mezcla_ordenadas(lista1, lista2) == resultado_esperado
+test_mezcla_ordenadas()
 
 def test_ordena_bubble_sort():
     # Caso de prueba 1: Lista desordenada
@@ -109,7 +110,7 @@ def test_ordena_bubble_sort():
     resultado_esperado = [42]
     ordena_bubble_sort(lista)
     assert lista == resultado_esperado
-
+test_ordena_bubble_sort()
 def test_inserta_ordenado():
     # Caso de prueba 1: Inserción en una lista vacía
     lista = []

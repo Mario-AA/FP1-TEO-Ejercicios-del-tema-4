@@ -13,8 +13,14 @@ def genera_aleatorios(n: int, minimo: int, maximo: int) -> list[int]:
     Devuelve:
     list[int]: Lista con n números enteros aleatorios.
     """
-    # TODO: Implementa esta función
-    pass
+    res = [0]
+    for _ in range(n):
+        numero = random.randint(minimo,maximo)
+        while numero == res[-1]:
+            numero = random.randint(minimo,maximo)
+        res.append(numero)
+
+    return res[1:]
 
 def intercala_listas(lista1: list, lista2: list) -> list:
     """
@@ -27,8 +33,19 @@ def intercala_listas(lista1: list, lista2: list) -> list:
     Devuelve:
     list: Lista resultante de intercalar las dos listas.
     """
-    # TODO: Implementa esta función
-    pass
+    res = []
+    for elem1,elem2 in zip(lista1,lista2):
+        res.append(elem1)
+        res.append(elem2)
+    tam1 = len(lista1)
+    tam2 = len(lista2)
+    if tam1 > tam2:
+        res.extend(lista1[tam2:])
+    elif tam2 > tam1:
+        res.extend(lista1[tam1:])
+    return res
+
+
 
 def mezcla_ordenadas(lista1: list, lista2: list) -> list:
     """
@@ -41,8 +58,22 @@ def mezcla_ordenadas(lista1: list, lista2: list) -> list:
     Devuelve:
     list: Lista resultante de mezclar las dos listas ordenadas.
     """
-    # TODO: Implementa esta función
-    pass
+    l1=0
+    l2=0
+    res = []
+    while l1 < len(lista1) and l2< len(lista2):
+        if lista1[l1] < lista2[l2]:
+            res.append(lista1[l1])
+            l1 += 1
+        else:
+            res.append(lista2[l2])
+            l2 += 1
+    
+    if l1 < len(lista1):
+        res.extend(lista1[l1:])
+    else:
+        res.extend(lista2[l2:])
+    return res
 
 def ordena_bubble_sort(lista: list) -> None:
     """
@@ -51,9 +82,15 @@ def ordena_bubble_sort(lista: list) -> None:
     Parámetros:
     lista (list[int]): Lista de números enteros a ordenar.
     """    
-    # TODO: Implementa esta función
-    pass
-
+    hay_intercambio = True
+    while hay_intercambio:    
+        i=0
+        hay_intercambio = False
+        for e1,e2 in zip(lista,lista[1:]):
+            if e1 > e2:
+                hay_intercambio = True
+                lista[i],lista[i+1] = lista[i+1],lista[i]
+        i += 1   
 def inserta_ordenado(lista_nombres: list[str], nombre: str) -> None:
     """
     Inserta un nombre en una lista de nombres manteniendo el orden (de menor a mayor longitud).
